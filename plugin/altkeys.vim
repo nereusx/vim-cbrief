@@ -77,4 +77,7 @@ func! altkeys#load()
 	endif
 endfunc
 
+if get(g:, 'cbrief_fix_altkeys', '1')
+	call altkeys#load()
+endif
 

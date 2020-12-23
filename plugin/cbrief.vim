@@ -12,11 +12,7 @@ let g:loaded_cbrief = 1
 
 " fix ALT keys mapping
 "source altkeys.vim
-if exists('g:cbrief_fix_altkeys') 
-	if g:cbrief_fix_altkeys
-		call altkeys#load()
-	endif
-endif
+"call altkeys#load()
 
 " load default BRIEF emulation
 "source brief.vim

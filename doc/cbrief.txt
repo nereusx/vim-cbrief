@@ -1,0 +1,9 @@
+*cbrief.txt*  BRIEF text editor emulation in VIM
+
+==============================================================================
+Options                                                        *CBRIEFOptions*
+
+'g:cbrief_fix_altkeys'
+set to zero to disable keymap fix for VIM (not used on neovim or gvim)
+
+
