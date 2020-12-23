@@ -16,7 +16,7 @@ if exists('g:loaded_altkeys')
 endif
 let g:loaded_altkeys = 1
 
-func! cbrief#altkeys#load()
+func! altkeys#load()
 	if has('nvim') || has('gui_running')
 		return
 	endif
