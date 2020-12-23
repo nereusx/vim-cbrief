@@ -5,14 +5,15 @@
 " Last Modified: Jan 2021
 
 " prevent to load again
-if exists('g:loaded_cbrief')
-    finish
-endif
+if exists('g:loaded_cbrief') | finish | endif
 let g:loaded_cbrief = 1
 
 " fix ALT keys mapping
 "source altkeys.vim
 "call altkeys#load()
+if get(g:, 'cbrief_fix_altkeys', '1')
+	call cbrief#altkeys#load()
+endif
 
 " load default BRIEF emulation
 "source brief.vim

@@ -11,15 +11,15 @@
 "	echo 'source ~/.vim/altkeys.vim' >> ~/.vimrc
 "
 
-if has('nvim') || has('gui_running')
-	finish
-endif
 if exists('g:loaded_altkeys')
 	finish
 endif
 let g:loaded_altkeys = 1
 
-func! altkeys#load()
+func! cbrief#altkeys#load()
+	if has('nvim') || has('gui_running')
+		return
+	endif
 	function! s:metacode(key)
 		exec "set <A-".a:key.">=\e".a:key
 	endfunc
@@ -76,8 +76,4 @@ func! altkeys#load()
 		let &t_TE = "\<Esc>[>4;m"
 	endif
 endfunc
-
-if get(g:, 'cbrief_fix_altkeys', '1')
-	call altkeys#load()
-endif
 
