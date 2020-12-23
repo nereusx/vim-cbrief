@@ -8,24 +8,26 @@
 if exists('g:loaded_cbrief') | finish | endif
 let g:loaded_cbrief = 1
 
+let schome = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+set rtp+=schome 
+
 " fix ALT keys mapping
-"source altkeys.vim
-"call altkeys#load()
+runtime altkeys.vim
 if get(g:, 'cbrief_fix_altkeys', '1')
 	call cbrief#altkeys#load()
 endif
 
 " load default BRIEF emulation
-"source brief.vim
+runtime brief.vim
 
 " colors
-"source ccolors.vim
+runtime ccolors.vim
 
 " colors
-"source csession.vim
+runtime csession.vim
 
 " my buflist
-"source cbuflist.vim
+runtime cbuflist.vim
 
 "
 set virtualedit=onemore
