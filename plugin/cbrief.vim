@@ -272,12 +272,26 @@ endfunc
 func! s:HelpOnKey(word)
 let opts = { 'title': ' Unix Pages: [' . a:word . '] '}
 let cmd = ''
+let manfilt = ' | col -bx'
 
 if &filetype == "pascal"
+	" fpman required: https://github.com/suve/fpman
 	let opts['title'] = ' FPC Pages: [' . a:word . '] '
-	let cmd = printf('%s/.vim/pasdoc %s | col -bx', $HOME, a:word)
-else
-	let cmd = printf('man %s | col -bx', a:word)
+	let cmd = printf('%s/.vim/pasdoc %s %s', $HOME, a:word, manfilt)
+elseif &filetype == "php"
+	" pear {install|upgrade} doc.php.net/pman
+	let opts['title'] = ' pman: [' . a:word . '] '
+	let cmd = printf('pman %s %s', a:word, manfilt)
+elseif &filetype == "perl"
+	" this is tricky, use 'perldoc perldoc'
+	let opts['title'] = ' perldoc: [' . a:word . '] '
+	let cmd = printf('perldoc -f %s', a:word)
+elseif &filetype == "python"
+	let opts['title'] = ' pydoc: [' . a:word . '] '
+	let cmd = printf('pydoc %s %s', a:word, manfilt)
+else " C or bash or anything else
+	" add C++: https://github.com/jeaye/stdman
+	let cmd = printf('man %s %s', a:word, manfilt)
 endif
 call s:HelpView(cmd, opts)
 endfunc
