@@ -3,6 +3,11 @@
 " Author: Nicholas Christopoulos (nereus@freemail.gr)
 " Version: 1.0
 " Last Modified: Jan 2021
+"
+"	F11		toggles insert mode
+"	C-INS	copies to system clipboard (using xclip if no clipboard is available)
+"	S-INS	pastes from system clipboard (using xclip of no clipboard is available)
+"
 
 " prevent to load again
 if exists('g:loaded_cbrief') | finish | endif
@@ -82,7 +87,7 @@ func! cbrief#quit()
 	if cnt > 0
 		let choice = confirm(
 			\ printf('%d %s', cnt, 'buffer(s) has not been saved. Exit?'),
-			\  "&yes\n&no\n&write", 1)
+			\ "&yes\n&no\n&write", 1)
 		if choice == 1
 			silent! execute 'qa!'
 		elseif choice == 2
@@ -141,25 +146,43 @@ vnoremap <S-Right>	l
 " ================
 
 " === system clipboard ===
-func! cbrief#sys_paste()
+
+" paste from X11 primary clipboard
+func! cbrief#xpaste()
 	let ai = &autoindent
 	let si = &smartindent
 	let &autoindent = 0
 	let &smartindent = 0
-	exec 'normal "*P'
+	if has('clipboard')
+		exec 'normal "*P'
+	else
+		let @"=system('xclip -o -sel clip')
+		exec 'normal "*P'
+	endif
 	let &smartindent = si
 	let &autoindent = ai
 	redraw
 	echom "Clipborad text inserted."
 endfunc
-command! Bxpaste	call cbrief#sys_paste()
+command! Bxpaste	call cbrief#xpaste()
+
+" copy to X11 primary clipboard
+func! cbrief#xcopy()
+	if has('clipboard')
+		exec 'normal "*yy'
+	else
+		call system('xclip -i -sel clip', @")
+	endif
+	redraw
+	echom "Text copied to Clipboard."
+endfunc
+command! Bxcopy		call cbrief#xcopy()
 
 " Copy marked text to system clipboard.  If no mark, copy current line
-inoremap <silent> <C-Ins> <C-O>"*yy
-vnoremap <silent> <C-Ins> "*y
+inoremap <silent> <C-Ins> <C-O>:call cbrief#xcopy()<CR>
 
 " Paste the system clipboard contents to current cursor
-inoremap <silent> <S-Ins> <C-O>:call cbrief#sys_paste()<CR>
+inoremap <silent> <S-Ins> <C-O>:call cbrief#xpaste()<CR>
 
 " Cut the marked text to system clipboard. If no mark, cut the current line
 inoremap <silent> <S-Del> <C-O>"*dd
