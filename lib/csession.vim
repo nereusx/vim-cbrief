@@ -55,6 +55,7 @@ func! s:CSload()
 		let	sfile = printf('%s/%s', csdir, g:csession_file)
 		if filereadable(sfile)
 			silent! execute printf('source %s', sfile)
+			silent! execute 'filetype detect'
 			redraw
 			echom printf('csession %s loaded.', sfile)
 		endif
