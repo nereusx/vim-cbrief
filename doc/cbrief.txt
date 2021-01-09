@@ -6,4 +6,11 @@ Options                                                        *CBRIEFOptions*
 'g:cbrief_fix_altkeys'
 set to zero to disable keymap fix for VIM (not used on neovim or gvim)
 
+==============================================================================
+Non Standard Keys                                            *CBRIEFNoStdKeys*
+
+F11 = Toggles Insert/Normal Mode
+F12/Shift-F12 = Next/Previous Color-Scheme
+Alt-F12 = Select Color-Scheme popup window
+
 vim:tw=78:ts=4:noet:ft=help:
