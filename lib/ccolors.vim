@@ -47,10 +47,15 @@ endfunc
 
 func! s:CCSelect()
 	func! CCSelList(code)
-		let g:cc_selected = a:code
-		silent! execute "colorscheme " .. g:cc_schemes[g:cc_selected]
-		redraw
-		echom printf('Using [%s] color-scheme.', g:cc_schemes[g:cc_selected])
+		if a:code == -1
+			redraw
+			echo "canceled."
+		else
+			let g:cc_selected = a:code
+			silent! execute "colorscheme " .. g:cc_schemes[g:cc_selected]
+			redraw
+			echom printf('Using [%s] color-scheme.', g:cc_schemes[g:cc_selected])
+		endif
 	endfunc
 	let opts = {"close":"button", "index":string(g:cc_selected), "title":"Select Color Scheme"}
 	let opts.callback = 'CCSelList'
