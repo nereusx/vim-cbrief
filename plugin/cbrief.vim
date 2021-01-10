@@ -55,6 +55,7 @@ set insertmode
 "	\ callback: 'ColorSelected',
 "	\ })
 "
+let g:quickui_border_style = 2
 
 " F10: command-line
 inoremap <F10> <C-O>:

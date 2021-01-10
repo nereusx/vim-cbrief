@@ -1,10 +1,6 @@
 " Vim color file
 " Maintainer:   Nicholas Christopoulos
-" Last Change:  2020 Dec 14
-"
-" Color settings close to that used in Borland IDE's.
-" This is modified version of borland.vim color-scheme for use
-" with cbrief.vim.
+" Last Change:  2021 Jan 10
 "
 
 set background=dark
@@ -19,20 +15,25 @@ hi Normal       gui=NONE guifg=White guibg=DarkBlue
 hi NonText      term=NONE cterm=NONE ctermfg=White ctermbg=DarkBlue
 hi NonText      gui=NONE guifg=White guibg=DarkBlue
 
-hi Statement    term=NONE cterm=NONE ctermfg=White  ctermbg=DarkBlue
-hi Statement    gui=NONE guifg=White guibg=DarkBlue
-hi Special      term=NONE cterm=NONE ctermfg=Cyan ctermbg=DarkBlue
+hi Statement    term=NONE cterm=Bold ctermfg=White
+hi Statement    gui=Bold guifg=White guibg=DarkBlue
+hi Special      term=NONE cterm=NONE ctermfg=LightCyan
 hi Special      gui=NONE guifg=Cyan guibg=DarkBlue
-hi Constant     term=NONE cterm=NONE ctermfg=Magenta ctermbg=DarkBlue
-hi Constant     gui=NONE guifg=Magenta guibg=DarkBlue
-hi Comment      term=NONE cterm=NONE ctermfg=Gray ctermbg=DarkBlue
+hi Constant     term=NONE cterm=Bold ctermfg=220
+hi Constant     gui=Bold guifg=220 guibg=DarkBlue
+hi Number       cterm=NONE ctermfg=220
+hi Character    cterm=NONE ctermfg=Cyan
+hi String       cterm=NONE ctermfg=Cyan
+hi Boolean      cterm=NONE ctermfg=Blue
+hi Comment      term=NONE cterm=NONE ctermfg=250 ctermbg=DarkBlue
 hi Comment      gui=NONE guifg=Gray guibg=DarkBlue
-hi Preproc      term=NONE cterm=NONE ctermfg=Green ctermbg=DarkBlue
-hi Preproc      gui=NONE guifg=Green guibg=DarkBlue
-hi Type         term=NONE cterm=NONE ctermfg=White ctermbg=DarkBlue
-hi Type         gui=NONE guifg=White guibg=DarkBlue
-hi Identifier   term=NONE cterm=NONE ctermfg=White ctermbg=DarkBlue
-hi Identifier   gui=NONE guifg=White guibg=DarkBlue
+hi Preproc      term=NONE cterm=Bold ctermfg=Magenta
+hi Preproc      gui=NONE guifg=Magenta
+hi Type         term=NONE cterm=Bold ctermfg=220 ctermbg=DarkBlue
+hi Identifier   term=NONE cterm=Bold ctermfg=LightGreen ctermbg=DarkBlue
+hi Title        cterm=Bold ctermfg=White
+hi Title        gui=Bold guifg=White
+hi SpellBad     cterm=underline ctermfg=198 ctermbg=NONE
 
 hi StatusLine   term=bold cterm=bold ctermfg=Black ctermbg=White
 hi StatusLine   gui=bold guifg=Black guibg=White
@@ -60,8 +61,8 @@ hi Error        gui=NONE guifg=White guibg=Red
 
 hi Cursor       ctermfg=Black ctermbg=Yellow
 hi Cursor       guifg=Black guibg=Yellow
-hi CursorLine   term=reverse gui=reverse cterm=reverse
-
+hi CursorLine   term=reverse gui=reverse cterm=NONE ctermfg=White ctermbg=DarkBlue
+hi QuickSel		cterm=NONE ctermfg=White ctermbg=DarkBlue gui=NONE guifg=Yellow guibg=DarkBlue
 hi LineNr		ctermfg=8
 
 hi Pmenu		term=NONE cterm=NONE ctermfg=Black ctermbg=White
