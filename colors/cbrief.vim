@@ -60,6 +60,7 @@ hi Error        gui=NONE guifg=White guibg=Red
 
 hi Cursor       ctermfg=Black ctermbg=Yellow
 hi Cursor       guifg=Black guibg=Yellow
+hi CursorLine   term=reverse gui=reverse cterm=reverse
 
 hi LineNr		ctermfg=8
 
