@@ -12,15 +12,11 @@
 if exists('g:loaded_csession')
 	finish
 endif
-let g:loaded_csession = v:true
-if exists('g:backuproot')
-	let g:csession_directory = g:backuproot."/vim-sessions"
+let g:loaded_csession=1
+if exists('$BACKUPDIR')
+	let g:csession_directory=$BACKUPDIR.'/sessions'
 else
-	if exists('$BACKUPDIR')
-		let g:csession_directory = $BACKUPDIR."/vim-sessions"
-	else
-		let g:csession_directory = $HOME."/.vim/vim-sessions"
-	endif
+	let g:csession_directory=$HOME.'/.vim/files/sessions'
 endif
 let g:csession_file = ""
 let s:cstdin = 0
@@ -32,7 +28,7 @@ set sessionoptions-=blank,folds
 " create directory if it is necessary
 let s = expand(g:csession_directory)
 if !isdirectory(s)
-	if mkdir(s, "p", 0700) == 0
+	if mkdir(s, 'p', 0700) == 0
 		throw printf('error: csession could create directory %s.', s)
 	endif
 endif
