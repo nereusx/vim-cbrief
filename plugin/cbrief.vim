@@ -367,3 +367,7 @@ inoremap <silent> <F7>		<C-O>:call <SID>CBriefMacRec()<CR>
 inoremap <silent> <S-F7>	<C-O>:call <SID>CBriefMacPause()<CR>
 "inoremap <F8>		<C-O>:normal @q<CR>
 
+" (un)ident selection 
+xnoremap <S-TAB>  <gv
+xnoremap <TAB>    >gv
+
