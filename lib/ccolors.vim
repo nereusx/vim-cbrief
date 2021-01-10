@@ -1,7 +1,7 @@
 " File: ccolors.vim
 " Author: Nicholas Christopoulos
-" Version: 1.0
-" Last Modified: 14 Dec 2020
+" Version: 1.1
+" Last Modified: 10 Jan 2021
 "
 " Overview
 " --------

@@ -6,10 +6,21 @@ Options                                                        *CBRIEFOptions*
 'g:cbrief_fix_altkeys'
 set to zero to disable keymap fix for VIM (not used on neovim or gvim)
 
+'g:cc_schemes'
+array with colorschemes; if its not exists ccolors.vim will use all the
+colors schemes that find in runtimepath.
+
+Example:
+let g:cc_schemes = [ 'cbrief', 'gruvbox' ]
+
 ==============================================================================
 Non Standard Keys                                            *CBRIEFNoStdKeys*
 
+Alt+f = find next
+Ctrl+f = find previous
+
 F11 = Toggles Insert/Normal Mode
+
 F12/Shift-F12 = Next/Previous Color-Scheme
 Alt-F12 = Select Color-Scheme popup window
 
