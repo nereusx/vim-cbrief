@@ -336,3 +336,34 @@ inoremap <silent> <A-h>	<C-O>:call <SID>VimHelp()<CR>
 
 "command! NAV <C-L>:Explore<CR>
 
+" === key-macros ===
+" 
+" qr	q = start recording, r = named register
+" q     stop recording
+" qR	start recording again, R = [capital] named register, it is appends to register
+" [count]@q replay macro
+" 
+func s:CBriefMacRec()
+	if get(b:, 'brief_rec_mode', 0) == 0
+		normal qq
+		let b:brief_rec_mode = 1
+	elseif b:brief_rec_mode == 2
+		normal qQ
+		let b:brief_rec_mode = 1
+	else
+		normal q
+		let b:brief_rec_mode = 0
+	endif
+endfunc
+
+func s:CBriefMacPause()
+	if get(b:, 'brief_rec_mode', 0) == 1
+		normal q
+		let b:brief_rec_mode = 2
+	endif
+endfunc
+
+inoremap <silent> <F7>		<C-O>:call <SID>CBriefMacRec()<CR>
+inoremap <silent> <S-F7>	<C-O>:call <SID>CBriefMacPause()<CR>
+"inoremap <F8>		<C-O>:normal @q<CR>
+
