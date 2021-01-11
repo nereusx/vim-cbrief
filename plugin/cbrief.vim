@@ -21,6 +21,13 @@ if get(g:, 'cbrief_fix_altkeys', '1')
 	call altkeys#load()
 endif
 
+" i have conflict with this one, I dont know even what it does
+" it seems it is enables a diacritic-character mode but that 
+" it is suppossed does the loadkeys in console or the X''s xkb
+"
+inoremap <silent> <A-SPACE> <SPACE>
+noremap <silent> <A-SPACE> <SPACE>
+
 " load default BRIEF emulation
 exec 'source '.schome.'/brief.vim'
 
