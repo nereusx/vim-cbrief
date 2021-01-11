@@ -19,21 +19,18 @@ hi Statement    term=NONE cterm=Bold ctermfg=White
 hi Statement    gui=Bold guifg=White guibg=DarkBlue
 hi Special      term=NONE cterm=NONE ctermfg=LightCyan
 hi Special      gui=NONE guifg=Cyan guibg=DarkBlue
-hi Constant     term=NONE cterm=Bold ctermfg=220
+hi Constant     term=NONE cterm=Bold ctermfg=LightRed
 hi Constant     gui=Bold guifg=220 guibg=DarkBlue
-hi Number       cterm=NONE ctermfg=220
+hi Number       cterm=NONE ctermfg=LightRed
 hi Character    cterm=NONE ctermfg=Cyan
 hi String       cterm=NONE ctermfg=Cyan
 hi Boolean      cterm=NONE ctermfg=Blue
-hi Comment      term=NONE cterm=NONE ctermfg=250 ctermbg=DarkBlue
-hi Comment      gui=NONE guifg=Gray guibg=DarkBlue
-hi Preproc      term=NONE cterm=Bold ctermfg=Magenta
-hi Preproc      gui=NONE guifg=Magenta
-hi Type         term=NONE cterm=Bold ctermfg=220 ctermbg=DarkBlue
+hi Comment      term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkBlue gui=NONE guifg=Gray guibg=DarkBlue
+hi Preproc      term=NONE cterm=Bold ctermfg=Magenta gui=NONE guifg=Magenta
+hi Type         term=NONE cterm=Bold ctermfg=LightRed ctermbg=DarkBlue
 hi Identifier   term=NONE cterm=Bold ctermfg=LightGreen ctermbg=DarkBlue
-hi Title        cterm=Bold ctermfg=White
-hi Title        gui=Bold guifg=White
-hi SpellBad     cterm=underline ctermfg=198 ctermbg=NONE
+hi Title        term=Bold cterm=Bold ctermfg=White gui=Bold guifg=White
+hi SpellBad     term=underline cterm=underline ctermfg=Red ctermbg=NONE
 
 hi StatusLine   term=bold cterm=bold ctermfg=Black ctermbg=White
 hi StatusLine   gui=bold guifg=Black guibg=White
