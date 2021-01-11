@@ -20,7 +20,7 @@ hi Statement    gui=Bold guifg=White guibg=DarkBlue
 hi Special      term=NONE cterm=NONE ctermfg=LightCyan
 hi Special      gui=NONE guifg=Cyan guibg=DarkBlue
 hi Constant     term=NONE cterm=Bold ctermfg=LightRed
-hi Constant     gui=Bold guifg=220 guibg=DarkBlue
+hi Constant     gui=Bold guifg=#ffd700 guibg=DarkBlue
 hi Number       cterm=NONE ctermfg=LightRed
 hi Character    cterm=NONE ctermfg=Cyan
 hi String       cterm=NONE ctermfg=Cyan
