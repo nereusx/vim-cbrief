@@ -24,9 +24,8 @@ endif
 " i have conflict with this one, I dont know even what it does
 " it seems it is enables a diacritic-character mode but that 
 " it is suppossed does the loadkeys in console or the X''s xkb
-"
-inoremap <silent> <A-SPACE> <SPACE>
-noremap <silent> <A-SPACE> <SPACE>
+"inoremap <silent> <A-SPACE> <SPACE>
+"noremap <silent> <A-SPACE> <SPACE>
 
 " load default BRIEF emulation
 exec 'source '.schome.'/brief.vim'
@@ -313,6 +312,9 @@ elseif &filetype == "php"
 	" pear {install|upgrade} doc.php.net/pman
 	let opts['title'] = ' pman: [' . a:word . '] '
 	let cmd = printf('pman %s %s', a:word, manfilt)
+elseif &filetype == "vim"
+	execute printf('h %s', a:word)
+	return
 elseif &filetype == "perl"
 	" this is tricky, use 'perldoc perldoc'
 	let opts['title'] = ' perldoc: [' . a:word . '] '
