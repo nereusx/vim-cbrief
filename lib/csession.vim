@@ -26,9 +26,8 @@ let s:cstdin = 0
 set sessionoptions-=blank,folds
 
 " create directory if it is necessary
-let s = expand(g:csession_directory)
-if !isdirectory(s)
-	if mkdir(s, 'p', 0700) == 0
+if !isdirectory(g:csession_directory)
+	if mkdir(g:csession_directory, 'p', 0700) == 0
 		throw printf('error: csession could create directory %s.', s)
 	endif
 endif
