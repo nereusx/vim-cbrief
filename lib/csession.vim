@@ -27,9 +27,7 @@ set sessionoptions-=blank,folds
 
 " create directory if it is necessary
 if !isdirectory(g:csession_directory)
-	if mkdir(g:csession_directory, 'p', 0700) == 0
-		throw printf('error: csession could create directory %s.', s)
-	endif
+	mkdir(g:csession_directory, 'p', 0700)
 endif
 
 " save session
@@ -37,7 +35,7 @@ func! s:CSsave()
 	if s:cstdin == 0
 		let g:csession_file = substitute(getcwd(), '[/ ]', '_', 'g')
 		silent! execute printf('mksession! %s/%s', expand(g:csession_directory), g:csession_file)
-		echom printf('csession %s saved.', g:csession_file)
+"		echom printf('csession %s saved.', g:csession_file)
 	endif
 endfunc
 
@@ -52,7 +50,7 @@ func! s:CSload()
 			silent! execute printf('source %s', sfile)
 			silent! execute 'filetype detect'
 			redraw
-			echom printf('csession %s loaded.', sfile)
+"			echom printf('csession %s loaded.', sfile)
 		endif
 	endif
 endfunc
