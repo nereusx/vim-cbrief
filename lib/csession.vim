@@ -23,7 +23,7 @@ let s:cstdin = 0
 
 " mksession options
 "set sessionoptions-=blank,options,folds
-set sessionoptions-=blank,folds
+"set sessionoptions-=blank,folds
 
 " create directory if it is necessary
 if !isdirectory(g:csession_directory)
