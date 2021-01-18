@@ -12,8 +12,8 @@ let g:colors_name="cbrief"
 
 hi Normal       term=NONE cterm=NONE ctermfg=White ctermbg=DarkBlue
 hi Normal       gui=NONE guifg=White guibg=DarkBlue
-hi NonText      term=NONE cterm=NONE ctermfg=White ctermbg=DarkBlue
-hi NonText      gui=NONE guifg=White guibg=DarkBlue
+hi NonText      term=NONE cterm=NONE ctermfg=Blue ctermbg=DarkBlue
+hi NonText      gui=NONE guifg=Blue guibg=DarkBlue
 
 hi Statement    term=NONE cterm=Bold ctermfg=White
 hi Statement    gui=Bold guifg=White guibg=DarkBlue
