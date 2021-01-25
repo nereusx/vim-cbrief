@@ -15,8 +15,8 @@ hi Normal       gui=NONE guifg=White guibg=DarkBlue
 hi NonText      term=NONE cterm=NONE ctermfg=Blue ctermbg=DarkBlue
 hi NonText      gui=NONE guifg=Blue guibg=DarkBlue
 
-hi Statement    term=NONE cterm=Bold ctermfg=White
-hi Statement    gui=Bold guifg=White guibg=DarkBlue
+hi Statement    term=NONE cterm=Bold ctermfg=Yellow
+hi Statement    gui=Bold guifg=Yellow
 hi Special      term=NONE cterm=NONE ctermfg=LightCyan
 hi Special      gui=NONE guifg=Cyan guibg=DarkBlue
 hi Constant     term=NONE cterm=Bold ctermfg=LightRed
@@ -25,10 +25,11 @@ hi Number       cterm=NONE ctermfg=LightRed
 hi Character    cterm=NONE ctermfg=Cyan
 hi String       cterm=NONE ctermfg=Cyan
 hi Boolean      cterm=NONE ctermfg=Blue
-hi Comment      term=NONE cterm=NONE ctermfg=LightGray ctermbg=DarkBlue gui=NONE guifg=Gray guibg=DarkBlue
+hi Comment      term=NONE cterm=NONE ctermfg=Gray
+hi Comment      gui=NONE guifg=Gray
 hi Preproc      term=NONE cterm=Bold ctermfg=Magenta gui=NONE guifg=Magenta
-hi Type         term=NONE cterm=Bold ctermfg=LightRed ctermbg=DarkBlue
-hi Identifier   term=NONE cterm=Bold ctermfg=LightGreen ctermbg=DarkBlue
+hi Type         term=NONE cterm=Bold ctermfg=LightRed
+hi Identifier   term=NONE cterm=Bold ctermfg=Green
 hi Title        term=Bold cterm=Bold ctermfg=White gui=Bold guifg=White
 hi SpellBad     term=underline cterm=underline ctermfg=Red ctermbg=NONE
 
