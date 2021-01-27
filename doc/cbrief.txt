@@ -21,6 +21,9 @@ Ctrl+f = find previous
 
 F11 = Toggles Insert/Normal Mode
 
+F9 = runs program (`:terminal %<`)
+A-F10 = saves and runs `make`
+
 F12/Shift-F12 = Next/Previous Color-Scheme
 Alt-F12 = Select Color-Scheme popup window
 

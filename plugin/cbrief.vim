@@ -381,3 +381,9 @@ inoremap <silent> <S-F7>	<C-O>:call <SID>CBriefMacPause()<CR>
 xnoremap <S-TAB>  <gv
 xnoremap <TAB>    >gv
 
+" compile: write and run make
+inoremap <silent> <A-F10> <C-O>:w <CR><C-O>:make<CR>
+" compile: run
+"inoremap <silent> <F9> <C-O>:w <CR><C-O>:make<CR><C-O>:terminal ./%<<CR>
+inoremap <silent> <F9> <C-O>:terminal ./%<<CR>
+
