@@ -200,15 +200,19 @@ vnoremap <silent> <S-Del> "*d
 
 " move to window
 inoremap <silent> <F1>	<C-O>:call <SID>ExecArrow(2)<CR>
+nnoremap <silent> <F1>	:call <SID>ExecArrow(2)<CR>
 
 " resize window
 inoremap <silent> <F2>	<C-O>:call <SID>ExecArrow(3)<CR>
+nnoremap <silent> <F2>	:call <SID>ExecArrow(3)<CR>
 
 " Split window
 inoremap <silent> <F3>	<C-O>:call <SID>ExecArrow(1)<CR>
+nnoremap <silent> <F3>	:call <SID>ExecArrow(1)<CR>
 
 " Close window
 inoremap <silent> <F4>	<C-O>:call <SID>ExecArrow(4)<CR>
+nnoremap <silent> <F4>	:call <SID>ExecArrow(4)<CR>
 
 " ------------------
 
