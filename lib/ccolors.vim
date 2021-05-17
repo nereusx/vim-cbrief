@@ -62,6 +62,7 @@ func! s:CCSelect()
 	call quickui#listbox#open(g:cc_schemes, opts)
 endfunc
 
-imap <silent> <F12>   <C-O>:call <SID>CCSwitch(1)<CR>
-imap <silent> <S-F12> <C-O>:call <SID>CCSwitch(-1)<CR>
-imap <silent> <A-F12> <C-O>:call <SID>CCSelect()<CR>
+imap <silent> <A-F12>n <C-O>:call <SID>CCSwitch(1)<CR>
+imap <silent> <A-F12>p <C-O>:call <SID>CCSwitch(-1)<CR>
+imap <silent> <A-F12>c <C-O>:call <SID>CCSelect()<CR>
+
