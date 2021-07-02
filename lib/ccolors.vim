@@ -32,7 +32,7 @@ if ! exists('g:cc_schemes')
 	let g:cc_schemes = map(paths, 'fnamemodify(v:val, ":t:r")')
 endif
 
-func! s:CCSwitch(swinc)
+func! ccolors#ccswitch(swinc)
 	let g:cc_selected += a:swinc
 	let cnt = len(g:cc_schemes)
 	if g:cc_selected >= cnt
@@ -45,7 +45,7 @@ func! s:CCSwitch(swinc)
 	echom printf('Using [%s] color-scheme.', g:cc_schemes[g:cc_selected])
 endfunc
 
-func! s:CCSelect()
+func! ccolors#ccselect()
 	func! CCSelList(code)
 		if a:code == -1
 			redraw
@@ -62,7 +62,12 @@ func! s:CCSelect()
 	call quickui#listbox#open(g:cc_schemes, opts)
 endfunc
 
-imap <silent> <A-F12>n <C-O>:call <SID>CCSwitch(1)<CR>
-imap <silent> <A-F12>p <C-O>:call <SID>CCSwitch(-1)<CR>
-imap <silent> <A-F12>c <C-O>:call <SID>CCSelect()<CR>
+if exists('g:loaded_umenu')
+	call umenu#additem("&c	Colors Dialog",   "call ccolors#ccselect()")
+	call umenu#additem("&n	Colors Next",     "call ccolors#ccswitch(1)")
+	call umenu#additem("&p	Colors Previous", "call ccolors#ccswitch(-1)")
+endif
+imap <silent> <A-F12>n <C-O>:call ccolors#ccswitch(1)<CR>
+imap <silent> <A-F12>p <C-O>:call ccolors#ccswitch(-1)<CR>
+imap <silent> <A-F12>c <C-O>:call ccolors#ccselect()<CR>
 

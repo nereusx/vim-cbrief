@@ -30,6 +30,9 @@ endif
 " load default BRIEF emulation
 exec 'source '.schome.'/brief.vim'
 
+" user menu
+exec 'source '.schome.'/umenu.vim'
+
 " colors
 exec 'source '.schome.'/ccolors.vim'
 
