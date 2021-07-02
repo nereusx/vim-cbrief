@@ -188,6 +188,9 @@ func! cbrief#xcopy()
 endfunc
 command! Bxcopy		call cbrief#xcopy()
 
+call umenu#additem("xc	xcopy", "call cbrief#xcopy()")
+call umenu#additem("xp	xpaste", "call cbrief#xpaste()")
+
 " Copy marked text to system clipboard.  If no mark, copy current line
 inoremap <silent> <C-Ins> <C-O>:call cbrief#xcopy()<CR>
 
@@ -393,4 +396,9 @@ inoremap <silent> <A-F10> <C-O>:w <CR><C-O>:make<CR>
 " compile: run
 "inoremap <silent> <F9> <C-O>:w <CR><C-O>:make<CR><C-O>:terminal ./%<<CR>
 inoremap <silent> <F9> <C-O>:terminal ./%<<CR>
+
+" user menu
+inoremap <silent> <F12>		<C-O>:call umenu#show()<CR>
+nnoremap <silent> <F12>		<C-O>:call umenu#show()<CR>
+vnoremap <silent> <F12>		<C-O>:call umenu#show()<CR>
 
