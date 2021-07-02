@@ -28,5 +28,5 @@ func umenu#show()
 	call quickui#listbox#open(g:umenu#list, opts)
 endfunc
 
-imap <silent> <A-F12>m <C-O>:call umenu#show()<CR>
+"imap <silent> <A-F12>m <C-O>:call umenu#show()<CR>
 
