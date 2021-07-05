@@ -188,8 +188,17 @@ func! cbrief#xcopy()
 endfunc
 command! Bxcopy		call cbrief#xcopy()
 
-call umenu#additem("xc	xcopy", "call cbrief#xcopy()")
-call umenu#additem("xp	xpaste", "call cbrief#xpaste()")
+if exists('g:umenu_loaded')
+	func cbrief#xclip()
+		let list = [
+			\ [ "&c	xcopy", "call cbrief#xcopy()" ],
+			\ [ "&p	xpaste", "call cbrief#xpaste()" ]
+			\ ]
+		call quickui#listbox#open(list, opts)
+	endfunc
+	call umenu#additem("&x	XClip", "call cbrief#xclip()")
+	call quickui#listbox#open(g:umenu#list, opts)
+endif
 
 " Copy marked text to system clipboard.  If no mark, copy current line
 inoremap <silent> <C-Ins> <C-O>:call cbrief#xcopy()<CR>

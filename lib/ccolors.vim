@@ -63,11 +63,15 @@ func! ccolors#ccselect()
 endfunc
 
 if exists('g:loaded_umenu')
-	call umenu#additem("&c	Colors Dialog",   "call ccolors#ccselect()")
-	call umenu#additem("&n	Colors Next",     "call ccolors#ccswitch(1)")
-	call umenu#additem("&p	Colors Previous", "call ccolors#ccswitch(-1)")
+	func ccolors#menu()
+		let locpop = [
+			\ [ "&c	Colors Dialog",   "call ccolors#ccselect()" ],
+			\ [ "&n	Colors Next",     "call ccolors#ccswitch(1)" ],
+			\ [ "&p	Colors Previous", "call ccolors#ccswitch(-1)" ]
+			\ ]
+		let opts = {"close":"button", "index":0, "title":"CColors Menu"}
+		call quickui#listbox#open(locpop, opts)
+	endfunc
+	call umenu#additem("&c	CColors", "call ccolors#menu()")
 endif
-imap <silent> <A-F12>n <C-O>:call ccolors#ccswitch(1)<CR>
-imap <silent> <A-F12>p <C-O>:call ccolors#ccswitch(-1)<CR>
-imap <silent> <A-F12>c <C-O>:call ccolors#ccselect()<CR>
 
