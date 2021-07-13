@@ -2,6 +2,9 @@
 " Author: Yegappan Lakshmanan
 " Version: 1.0
 " Last Modified: April 5 2002
+
+" This is modified version for cbrief
+
 "
 " Overview
 " --------
@@ -212,8 +215,7 @@ set virtualedit=all
 set nostartofline
 
 " Disable menu accelerators.  The Alt key that activates the menu interfere
-" with the Brief key mappings.
-set winaltkeys=no
+" with the Brief key mappings. set winaltkeys=no
 
 "-----------------------
 " Cursor movement
@@ -230,10 +232,10 @@ inoremap <silent> <C-Left> <C-O>B
 inoremap <silent> <C-Right> <C-O>W
 
 " brief-home-key
-inoremap <silent> <Home> <C-O>:call <SID>BriefHomeKey()<CR>
+inoremap <silent> <Home> <C-O>:call brief#HomeKey()<CR>
 
 " brief-end-key
-inoremap <silent> <End> <C-O>:call <SID>BriefEndKey()<CR>
+inoremap <silent> <End> <C-O>:call brief#EndKey()<CR>
 
 " goto-beginning of file
 inoremap <silent> <C-PageUp> <C-O>gg
@@ -322,7 +324,7 @@ vnoremap <silent> <C-Del> <C-O>d
 inoremap <silent> <C-v> <C-O>"*P
 
 " Goto line
-inoremap <silent> <A-g> <C-O>:call <SID>BriefGotoLine()<CR>
+inoremap <silent> <A-g> <C-O>:call brief#GotoLine()<CR>
 
 " Delete the previous word
 inoremap <silent> <C-BS> <C-W>
@@ -333,7 +335,7 @@ inoremap <silent> <A-BS> <C-O>E<C-O>E<C-O>a<C-W>
 " Complete a partially typed word
 inoremap <silent> <A-/> <C-p>
 
-" Quote the next character
+" Quote the next characte
 inoremap <silent> <A-q> <C-v>
 
 "-----------------------
@@ -355,10 +357,10 @@ inoremap <silent> <C-y> <C-r>
 "-----------------------
 
 " string-search
-inoremap <silent> <C-f> <C-O>:call <SID>BriefSearch("")<CR>
-inoremap <silent> <F5> <C-O>:call <SID>BriefSearch("")<CR>
+"inoremap <silent> <C-f> <C-O>:call brief#Search("")<CR>
+inoremap <silent> <F5> <C-O>:call brief#Search("")<CR>
 
-inoremap <silent> <A-s> <C-O>:call <SID>BriefSearch(expand("<cword>")<CR>
+inoremap <silent> <A-s> <C-O>:call brief#Search(expand("<cword>"))<CR>
 
 " search again
 inoremap <silent> <S-F5> <C-O>n
@@ -367,10 +369,10 @@ inoremap <silent> <S-F5> <C-O>n
 inoremap <silent> <A-F5> <C-O>N
 
 " Search and replace from the current cursor position
-inoremap <silent> <F6> <C-O>:call <SID>BriefSearchAndReplace("")<CR>
+inoremap <silent> <F6> <C-O>:call brief#SearchAndReplace("")<CR>
 
 " Search and replace the current word from the current cursor position
-inoremap <silent> <A-t> <C-O>:call <SID>BriefSearchAndReplace(expand("<cword>"))<CR>
+inoremap <silent> <A-t> <C-O>:call brief#SearchAndReplace(expand("<cword>"))<CR>
 
 " Repeat last search and replace
 inoremap <silent> <S-F6> <C-O>:.,$&&<CR>
@@ -386,16 +388,16 @@ inoremap <silent> <C-F5> <C-O>:set invignorecase<CR>
 inoremap <A-e> <C-O>:edit 
 
 " exit
-inoremap <silent> <A-x> <C-O>:confirm quit<CR>
+"inoremap <silent> <A-x> <C-O>:confirm quit<CR>
 
 " read file
 inoremap <A-r> <C-O>:read  
 
 " Save the current file
-inoremap <silent> <A-w> <C-O>:call <SID>BriefSave()<CR>
+inoremap <silent> <A-w> <C-O>:call brief#Save()<CR>
 
 " Save the current file in a different file name
-inoremap <silent> <A-o> <C-O>:call <SID>BriefSaveAs()<CR>
+inoremap <silent> <A-o> <C-O>:call brief#SaveAs()<CR>
 
 " Select next buffer from the buffer list
 inoremap <silent> <A-n> <C-O>:bnext<CR>
@@ -412,7 +414,7 @@ inoremap <silent> <C-kMinus> <C-O>:bdelete<CR>
 inoremap <A-b> <C-O>:buffers<CR>:buffer 
 
 " Display buffer information
-inoremap <A-f> <C-O>:file<CR>
+"inoremap <A-f> <C-O>:file<CR>
 
 "-----------------------
 " Compiler related
@@ -502,7 +504,7 @@ inoremap <silent> <A-8> <C-O>mj
 inoremap <silent> <A-9> <C-O>mk
 
 " Jump to a bookmark
-inoremap <silent> <A-j> <C-O>:call <SID>BriefJumpMark()<CR>
+inoremap <silent> <A-j> <C-O>:call brief#JumpMark()<CR>
 
 "-----------------------
 " Windows
@@ -525,7 +527,7 @@ inoremap <silent> <A-Up> <C-O><C-W>W
 
 "-----------------------------------------------------------------------
 
-function! s:BriefHomeKey()
+function! brief#HomeKey()
    " if we are on the first char of the line, go to the top of the screen
    if (col(".") <= 1)
       " if on top of screen, go to top of file
@@ -542,7 +544,7 @@ function! s:BriefHomeKey()
 endfunction
 
 " This function is taken from vim online web page and modified
-function! s:BriefEndKey()
+function! brief#EndKey()
     let cur_col = virtcol(".")
     let line_len = virtcol("$")
 
@@ -570,7 +572,7 @@ function! s:BriefEndKey()
     endif
 endfunction
 
-function! s:BriefSearch(pattern)
+function! brief#Search(pattern)
     if has("gui_running")
         if a:pattern == ""
             promptfind
@@ -587,7 +589,7 @@ function! s:BriefSearch(pattern)
     endif
 endfunction
 
-function! s:BriefSearchAndReplace(pattern)
+function! brief#SearchAndReplace(pattern)
     if has("gui_running")
         if a:pattern == ""
             execute "promptrepl " . a:pattern
@@ -609,7 +611,7 @@ function! s:BriefSearchAndReplace(pattern)
     endif
 endfunction
 
-function! s:BriefSave()
+function! brief#Save()
     if expand("%") == ""
         if has("gui_running")
             browse write
@@ -625,7 +627,7 @@ function! s:BriefSave()
     endif
 endfunction
 
-function! s:BriefSaveAs()
+function! brief#SaveAs()
     if has("gui_running")
         browse saveas
     else
@@ -637,7 +639,7 @@ function! s:BriefSaveAs()
     endif
 endfunction
 
-function! s:BriefJumpMark()
+function! brief#JumpMark()
     let mark = input("Jump to bookmark: ")
     if mark == ""
         return
@@ -674,7 +676,7 @@ function! s:BriefJumpMark()
     endif
 endfunction
 
-function! s:BriefGotoLine()
+function! brief#GotoLine()
     let linenr = input("Line number to jump to: ")
     if linenr == ""
         return

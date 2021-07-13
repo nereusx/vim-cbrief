@@ -69,6 +69,7 @@ let g:quickui_border_style = 2
 " F10: command-line
 inoremap <F10> <C-O>:
 nnoremap <F10> <ESC>:
+vnoremap <F10> :
 
 " F11: switch modes
 func! cbrief#toggle_insert_mode()
@@ -83,6 +84,25 @@ endfunc
 
 inoremap <silent> <F11> <C-O>:call cbrief#toggle_insert_mode()<CR>
 nnoremap <silent> <F11> <ESC>:call cbrief#toggle_insert_mode()<CR><ESC>
+
+" fix visual mode
+xnoremap <silent> <A-u> I<C-O>:u<CR>
+xnoremap <silent> <A-d> d
+"xnoremap <silent> <A-s> I<C-O>:call brief#Search(expand("<cword>"))<CR>
+" (un)ident selection 
+xnoremap <S-TAB>  <gv
+xnoremap <TAB>    >gv
+" string-search
+xnoremap <silent> <F5>   I<C-O>:call brief#Search("")<CR>
+xnoremap <silent> <A-s>  I<C-O>:call brief#Search(expand("<cword>"))<CR>
+xnoremap <silent> <S-F5> n
+xnoremap <silent> <A-F5> N
+xnoremap <silent> <F6>   I<C-O>:call brief#SearchAndReplace("")<CR>
+xnoremap <silent> <A-t>  I<C-O>:call brief#SearchAndReplace(expand("<cword>"))<CR>
+xnoremap <silent> <S-F6> I<C-O>:.,$&&<CR>
+xnoremap <silent> <C-F5> I<C-O>:set invignorecase<CR>
+xnoremap <silent> <A-f>  n
+xnoremap <silent> <C-f>  N
 
 " Alt+X: Quit
 func! s:CountModBufs()
@@ -118,17 +138,12 @@ inoremap <A-x> <C-O>:call cbrief#quit()<CR>
 inoremap <A-e> <C-O>:edit<space>
 
 " search
-inoremap <A-s> <C-O>/
-inoremap <C-S> <C-O>?
-
-" search next
+"inoremap <A-s> <C-O>/
+"inoremap <C-S> <C-O>?
+" search again
 inoremap <silent> <A-f> <C-O>n
-
-" search next backward
-inoremap <silent> <C-F> <C-O>N
-
-" Search and replace from the current cursor position
-inoremap <silent> <A-t> <F6>
+" Reverse search
+inoremap <silent> <C-f> <C-O>N
 
 " === clipboard ===
 " Paste scrap buffer contents to current cursor position.
@@ -395,10 +410,6 @@ endfunc
 inoremap <silent> <F7>		<C-O>:call <SID>CBriefMacRec()<CR>
 inoremap <silent> <S-F7>	<C-O>:call <SID>CBriefMacPause()<CR>
 "inoremap <F8>		<C-O>:normal @q<CR>
-
-" (un)ident selection 
-xnoremap <S-TAB>  <gv
-xnoremap <TAB>    >gv
 
 " compile: write and run make
 inoremap <silent> <A-F10> <C-O>:w <CR><C-O>:make<CR>
